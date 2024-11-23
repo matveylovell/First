@@ -12,13 +12,7 @@ const setupDB = require('./utils/db');
 const { port } = keys;
 const app = express();
 
-app.use(cors(
-  {
-    origin: {""}
-    methods: ["POST","GET"],
-    credentials: true
-  }
-));
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -28,11 +22,20 @@ app.use(
     frameguard: true
   })
 );
-app.use(cors());
+
+app.use(cors(
+  {
+    origin: {""}
+    methods: ["POST","GET"],
+    credentials: true
+  }
+));
 
 setupDB();
 require('./config/passport')(app);
 app.use(routes);
+
+mongoose.connect('mongodb+srv://lovellmatvey:af2132&S(FH@R{}:)@lovellmatvey.guryt.mongodb.net/?retryWrites=true&w=majority&appName=lovellmatvey')
 
 const server = app.listen(port, () => {
   console.log(
