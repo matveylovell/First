@@ -32,7 +32,7 @@ setupDB();
 require('./config/passport')(app);
 app.use(routes);
 
-mongoose.connect('mongodb+srv://lovellmatvey:af2132&S(FH@R{}:)@lovellmatvey.guryt.mongodb.net/?retryWrites=true&w=majority&appName=lovellmatvey')
+
 
 const server = app.listen(port, () => {
   console.log(
